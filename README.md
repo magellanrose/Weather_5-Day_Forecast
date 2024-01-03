@@ -1,7 +1,7 @@
 # Weather_5-Day_Forecast
 
 ## Description
-This is a app that will display the weather every time you enter a city any where around the world. It will also display the wind speed and humidity in the city that was searched as well.
+This is a app that will display the weather every time you enter a city any where around the world. It will also display the wind speed and humidity in the city that was searched as well. It will also display all the cities you searched and save them to local storage.
 
 ## Repository
 https://github.com/magellanrose/Weather_5-Day_Forecast
