@@ -13,7 +13,7 @@ I used html, css, and javascipt to install this app.
 MIT license
 
 # Mock - UP
-![Mockup](./Assets/Screenshot%20(4).png)
+![Mockup](./Assets/Screenshot%20(5).png)
 
 ### Credits
 I used Rutgers bottcamp resources to help me create this app.
