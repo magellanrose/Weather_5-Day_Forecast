@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <ol id="search-city-list">
+        <h1>Search History</h1>
+    </ol>
     <div class="card">
         <div class="search">
             <input type="text" placeholder="entry city name"
@@ -42,10 +45,37 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+const searchCity = document.querySelector("#search-city-list")
+let localStorageCityList = [];
 
+function getCityFromLocalStorage(){
+  localStorageCityList = JSON.parse(localStorage.getItem('searchCity'));
+  console.log('Inside func localStorageCityList', localStorageCityList)
+
+  for (let i = 0; i < localStorageCityList.length; i++) {
+    console.log(localStorageCityList[i]);
+    const newLi = document.createElement("li");
+    newLi.innerHTML = localStorageCityList[i];
+    searchCity.append(newLi);
+    
+}
+
+}
+
+console.log('localStorageCityList', localStorageCityList)
 
 async function checkWeather(city){
+    console.log('checkWeahterlocalStorageCityList', localStorageCityList)
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    
+    console.log('city', city);
+    console.log(searchCity)
+    const newLi = document.createElement("li");
+    newLi.innerHTML = city
+    searchCity.append(newLi);
+    localStorageCityList.push(city)
+    localStorage.setItem("searchCity", JSON.stringify(localStorageCityList));
+    console.log('Saved ==== localStorageCityList', localStorageCityList);
     var data = await response.json();
 
     console.log(data);
@@ -54,6 +84,7 @@ async function checkWeather(city){
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + '°c';
     document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
     document.querySelector(".wind").innerHTML = data.wind.speed + 'km/h';
+
 
     if(data.weather[0].main == 'Clouds'){
         weatherIcon.src = "assets/images/clouds.png";
@@ -82,7 +113,9 @@ searchBtn.addEventListener("click", ()=>{
     checkWeather(searchBox.value);
 })
 
-checkWeather();
+
+getCityFromLocalStorage();
+
 </script>
 </body>
 </html>

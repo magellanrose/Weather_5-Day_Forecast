@@ -88,3 +88,13 @@ body{
 .weather{
     display: none;
 }
+
+#search-city-list h1{
+    margin: 20px;
+    color: #00feba;
+}
+
+#search-city-list li{
+    margin: 20px;
+    color: #fff;
+}
