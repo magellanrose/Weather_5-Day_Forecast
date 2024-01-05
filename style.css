@@ -86,7 +86,7 @@ body{
 }
 
 .weather{
-    display: none;
+    /* display: none; */
 }
 
 #search-city-list h1{
